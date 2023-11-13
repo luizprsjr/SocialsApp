@@ -2,6 +2,22 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+  <key>UIAppFonts</key>
+  <array>
+    <string>fonts/Panchang-Light.otf</string>
+
+    <string>fonts/Satoshi-Black.otf</string>
+    <string>fonts/Satoshi-BlackItalic.otf</string>
+    <string>fonts/Satoshi-Bold.otf</string>
+    <string>fonts/Satoshi-BoldItalic.otf</string>
+    <string>fonts/Satoshi-Italic.otf</string>
+    <string>fonts/Satoshi-Light.otf</string>
+    <string>fonts/Satoshi-LightItalic.otf</string>
+    <string>fonts/Satoshi-Medium.otf</string>
+    <string>fonts/Satoshi-MediumItalic.otf</string>
+    <string>fonts/Satoshi-Regular.otf</string>
+
+  </array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
