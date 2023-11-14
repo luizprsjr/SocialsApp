@@ -7,10 +7,7 @@ import {IS_IOS} from '../../theme';
 import {Box} from '../box';
 import {Icon} from '../icon';
 import {Text} from '../text';
-import {
-  ScrollViewContainer,
-  ViewContainer,
-} from './components/screen-container';
+import {ScrollViewContainer, ViewContainer} from './components';
 
 interface ScreenProps {
   children: React.ReactNode;
