@@ -10,12 +10,13 @@ import {useAppTheme} from '../../hooks/use-app-theme';
 import {Box, BoxProps} from './box';
 import {$fontFamily, $fontSizes, Text} from './text';
 
-interface TextInputProps extends RNTextInputProps {
+export interface TextInputProps extends RNTextInputProps {
   label: string;
   errorMessage?: string;
   RightComponent?: React.ReactElement;
   boxProps?: BoxProps;
 }
+
 export function TextInput({
   label,
   errorMessage,
