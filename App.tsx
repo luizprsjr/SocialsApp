@@ -3,44 +3,40 @@ import {SafeAreaView, View} from 'react-native';
 
 import {ThemeProvider} from '@shopify/restyle';
 
-import {Box, Button, Text, theme} from './src/ui';
-import {Icon} from './src/ui/core/icon';
+import {Button, Icon, Text, TextInput, theme} from './src/ui';
 
 function App(): JSX.Element {
   return (
     <ThemeProvider theme={theme}>
       <SafeAreaView>
         <View style={{paddingHorizontal: 24}}>
-          <Text preset="headingLarge" italic>
-            Socials
+          <Text marginBottom="s8" preset="headingLarge">
+            Olá
+          </Text>
+          <Text preset="paragraphLarge" mb="s40">
+            Digite seu e-mail e senha para entrar
           </Text>
 
-          <Button title="Primary" marginBottom="s12" />
-          <Button disabled title="Primary" marginBottom="s12" />
-          <Button preset="outline" title="Outline" marginBottom="s12" />
+          <TextInput
+            errorMessage="mensagem de error"
+            label="E-mail"
+            placeholder="Digite seu e-mail"
+            boxProps={{mb: 's20'}}
+          />
 
-          <Button disabled preset="outline" title="Loading" loading />
+          <TextInput
+            label="Senha"
+            placeholder="Digite sua senha"
+            RightComponent={<Icon color="gray2" name="eyeOn" />}
+            boxProps={{mb: 's10'}}
+          />
 
-          <Box
-            flexDirection="row"
-            justifyContent="center"
-            marginVertical="s20"
-            gap="s4">
-            <Icon name="chevronRight" size={42} />
-            <Icon name="heartFill" size={42} color="buttonPrimary" />
-            <Icon name="profile" size={42} />
-            <Icon name="profileFill" size={42} />
-            <Icon name="heart" size={42} />
-            <Icon name="bellOn" color="carrotSecondary" size={42} />
-          </Box>
-          <Box flexDirection="row" justifyContent="center" gap="s4">
-            <Icon name="newPost" size={42} />
-            <Icon name="camera" size={42} />
-            <Icon name="chat" size={42} />
-            <Icon name="chatOn" color="error" size={42} />
-            <Icon name="flashOff" size={42} />
-            <Icon name="flashOn" size={42} />
-          </Box>
+          <Text color="primary" preset="paragraphSmall" bold>
+            Esqueci minha senha
+          </Text>
+
+          <Button marginTop="s48" title="Entrar" />
+          <Button preset="outline" marginTop="s12" title="Criar uma conta" />
         </View>
       </SafeAreaView>
     </ThemeProvider>
