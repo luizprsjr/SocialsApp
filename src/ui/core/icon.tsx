@@ -10,18 +10,19 @@ export interface IconBase {
   color?: string;
 }
 
-interface Props {
+export interface IconProps {
   name: IconName;
   color?: ThemeColors;
   size?: number;
   onPress?: () => void;
 }
+
 export function Icon({
   name,
   color = 'backgroundContrast',
   size,
   onPress,
-}: Props) {
+}: IconProps) {
   const {colors} = useAppTheme();
   const SVGIcon = iconRegistry[name];
 
@@ -43,6 +44,7 @@ const iconRegistry = {
   chat: I.ChatIcon,
   chatOn: I.ChatOnIcon,
   check: I.CheckIcon,
+  checkRound: I.CheckRoundIcon,
   comment: I.CommentIcon,
   chevronRight: I.ChevronRightIcon,
   eyeOn: I.EyeOnIcon,
@@ -54,6 +56,7 @@ const iconRegistry = {
   home: I.HomeIcon,
   homeFill: I.HomeFillIcon,
   message: I.MessageIcon,
+  messageRound: I.MessageRoundIcon,
   newPost: I.NewPostIcon,
   profile: I.ProfileIcon,
   profileFill: I.ProfileFillIcon,
