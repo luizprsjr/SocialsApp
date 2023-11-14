@@ -8,6 +8,7 @@ export function PasswordInput(props: PasswordInputProps) {
   const [isSecureTextEntry, setIsSecureTextEntry] = useState(true);
 
   function toggleSecureTextEntry() {
+    console.log(isSecureTextEntry);
     setIsSecureTextEntry(prev => !prev);
   }
   return (
@@ -18,7 +19,7 @@ export function PasswordInput(props: PasswordInputProps) {
         <Icon
           onPress={toggleSecureTextEntry}
           color="gray2"
-          name={isSecureTextEntry ? 'eyeOn' : 'eyeOff'}
+          name={isSecureTextEntry ? 'eyeOff' : 'eyeOn'}
         />
       }
     />
