@@ -1,19 +1,25 @@
 import React from 'react';
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView, View} from 'react-native';
 
 import {ThemeProvider} from '@shopify/restyle';
 
-import {Text, theme} from './src/ui';
+import {Button, Text, theme} from './src/ui';
 
 function App(): JSX.Element {
   return (
     <ThemeProvider theme={theme}>
       <SafeAreaView>
-        <Text preset="headingLarge" italic>
-          Socials
-        </Text>
-        <Text preset="headingMedium">Socials</Text>
-        <Text preset="paragraphMedium">Socials</Text>
+        <View style={{paddingHorizontal: 24}}>
+          <Text preset="headingLarge" italic>
+            Socials
+          </Text>
+
+          <Button title="Primary" marginBottom="s12" />
+          <Button disabled title="Primary" marginBottom="s12" />
+          <Button preset="outline" title="Outline" marginBottom="s12" />
+
+          <Button disabled preset="outline" title="Loading" loading />
+        </View>
       </SafeAreaView>
     </ThemeProvider>
   );
