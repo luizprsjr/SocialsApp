@@ -4,5 +4,6 @@ export * from './activity-indicator';
 export * from './button';
 export * from './icon';
 export * from './text-input';
+export * from './controlled-text-input';
 export * from './screen';
 export * from './password-input';
