@@ -1,8 +1,21 @@
 import React from 'react';
 
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+
+import {RootStackParamList} from '../../routes';
 import {Button, PasswordInput, Screen, Text, TextInput} from '../../ui';
 
-export function LoginScreen() {
+type ScreenProps = NativeStackScreenProps<RootStackParamList, 'LoginScreen'>;
+
+export function LoginScreen({navigation}: ScreenProps) {
+  function navigateToSignUpScreen() {
+    navigation.navigate('SignUpScreen');
+  }
+
+  function navigateToForgotPasswordScreen() {
+    navigation.navigate('ForgotPasswordScreen');
+  }
+
   return (
     <Screen scrollable>
       <Text marginBottom="s8" preset="headingLarge">
@@ -25,12 +38,21 @@ export function LoginScreen() {
         boxProps={{mb: 's10'}}
       />
 
-      <Text color="primary" preset="paragraphSmall" bold>
+      <Text
+        onPress={navigateToForgotPasswordScreen}
+        color="primary"
+        preset="paragraphSmall"
+        bold>
         Esqueci minha senha
       </Text>
 
       <Button marginTop="s48" title="Entrar" />
-      <Button preset="outline" marginTop="s12" title="Criar uma conta" />
+      <Button
+        onPress={navigateToSignUpScreen}
+        preset="outline"
+        marginTop="s12"
+        title="Criar uma conta"
+      />
     </Screen>
   );
 }
