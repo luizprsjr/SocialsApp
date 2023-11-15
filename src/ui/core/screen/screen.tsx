@@ -1,5 +1,5 @@
 import React from 'react';
-import {KeyboardAvoidingView, Platform} from 'react-native';
+import {KeyboardAvoidingView} from 'react-native';
 
 import {useNavigation} from '@react-navigation/native';
 
@@ -26,11 +26,6 @@ export function Screen({
   const {colors} = useAppTheme();
 
   const navigation = useNavigation();
-
-  console.log({
-    device: Platform.OS,
-    bottom,
-  });
 
   const Container = scrollable ? ScrollViewContainer : ViewContainer;
   return (
