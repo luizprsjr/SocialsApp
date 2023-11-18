@@ -8,6 +8,7 @@ import {
 
 import {useAppTheme} from '@hooks';
 import {Box, BoxProps} from '@ui';
+
 import {$fontFamily, $fontSizes, Text} from './text';
 
 export interface TextInputProps extends RNTextInputProps {

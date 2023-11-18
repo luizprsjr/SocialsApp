@@ -17,6 +17,7 @@ import {
   spacingShorthand,
   SpacingShorthandProps,
 } from '@shopify/restyle';
+
 import {ThemeProps} from '@ui';
 
 export const Box = createBox<ThemeProps>();

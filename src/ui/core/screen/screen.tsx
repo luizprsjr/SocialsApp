@@ -1,8 +1,9 @@
 import React from 'react';
 import {KeyboardAvoidingView} from 'react-native';
 
-import {useAppSafeArea, useAppTheme} from '@hooks';
 import {useNavigation} from '@react-navigation/native';
+
+import {useAppSafeArea, useAppTheme} from '@hooks';
 import {Box, Icon, IS_IOS, Text, TouchableOpacityBox} from '@ui';
 
 import {ScrollViewContainer, ViewContainer} from './components';
