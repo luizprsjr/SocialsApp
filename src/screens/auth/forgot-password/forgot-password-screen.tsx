@@ -3,10 +3,10 @@ import {useForm} from 'react-hook-form';
 
 import {zodResolver} from '@hookform/resolvers/zod';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {Button, ControlledTextInput, Screen, Text} from '@ui';
 
 import {useResetNavigationSuccess} from '../../../hooks/use-reset-navigation';
 import {RootStackParamList} from '../../../routes';
-import {Button, ControlledTextInput, Screen, Text} from '../../../ui';
 import {
   ForgotPasswordSchema,
   forgotPasswordSchema,

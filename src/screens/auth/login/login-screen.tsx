@@ -4,15 +4,15 @@ import {Alert} from 'react-native';
 
 import {zodResolver} from '@hookform/resolvers/zod';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-
-import {RootStackParamList} from '../../../routes';
 import {
   Button,
   ControlledPasswordInput,
   ControlledTextInput,
   Screen,
   Text,
-} from '../../../ui';
+} from '@ui';
+
+import {RootStackParamList} from '../../../routes';
 import {LoginSchema, loginSchema} from './login-schema';
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'LoginScreen'>;
