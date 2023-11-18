@@ -3,10 +3,7 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import {ForgotPasswordScreen} from '../screens/forgot-password';
-import {LoginScreen} from '../screens/login';
-import {SignUpScreen} from '../screens/sign-up';
-import {SuccessScreen} from '../screens/success/success-screen';
+import * as Auth from '../screens/auth';
 import {IconProps} from '../ui';
 
 export type RootStackParamList = {
@@ -30,12 +27,12 @@ export function Router() {
           fullScreenGestureEnabled: true,
         }}
         initialRouteName="LoginScreen">
-        <Stack.Screen name="LoginScreen" component={LoginScreen} />
-        <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
-        <Stack.Screen name="SuccessScreen" component={SuccessScreen} />
+        <Stack.Screen name="LoginScreen" component={Auth.LoginScreen} />
+        <Stack.Screen name="SignUpScreen" component={Auth.SignUpScreen} />
+        <Stack.Screen name="SuccessScreen" component={Auth.SuccessScreen} />
         <Stack.Screen
           name="ForgotPasswordScreen"
-          component={ForgotPasswordScreen}
+          component={Auth.ForgotPasswordScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

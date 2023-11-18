@@ -1,11 +1,11 @@
-import React from 'react';
-import {Controller, useForm} from 'react-hook-form';
-import {Alert} from 'react-native';
+import React from 'react'
+import { Controller, useForm } from 'react-hook-form'
+import { Alert } from 'react-native'
 
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
-import {RootStackParamList} from '../../routes';
-import {Button, PasswordInput, Screen, Text, TextInput} from '../../ui';
+import { RootStackParamList } from '../../../routes'
+import { Button, PasswordInput, Screen, Text, TextInput } from '../../../ui'
 
 type LoginFormType = {
   email: string;

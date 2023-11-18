@@ -2,9 +2,9 @@ import React from 'react';
 
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-import {useResetNavigationSuccess} from '../../hooks/use-reset-navigation';
-import {RootStackParamList} from '../../routes';
-import {Button, Screen, Text, TextInput} from '../../ui';
+import {useResetNavigationSuccess} from '../../../hooks/use-reset-navigation';
+import {RootStackParamList} from '../../../routes';
+import {Button, Screen, Text, TextInput} from '../../../ui';
 
 type ScreenProps = NativeStackScreenProps<
   RootStackParamList,
