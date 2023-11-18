@@ -1,9 +1,10 @@
 import React from 'react';
 import {Pressable} from 'react-native';
 
-import {useAppTheme} from '../../hooks/use-app-theme';
+import {useAppTheme} from '@hooks';
+import {ThemeColors} from '@ui';
+
 import * as I from '../icons';
-import {ThemeColors} from '../theme';
 
 export interface IconBase {
   size?: number;

@@ -6,9 +6,8 @@ import {
   TextStyle,
 } from 'react-native';
 
-import {useAppTheme} from '../../hooks/use-app-theme';
-import {Box, BoxProps} from './box';
-import {$fontFamily, $fontSizes, Text} from './text';
+import {useAppTheme} from '@hooks';
+import {$fontFamily, $fontSizes, Box, BoxProps, Text} from '@ui';
 
 export interface TextInputProps extends RNTextInputProps {
   label: string;

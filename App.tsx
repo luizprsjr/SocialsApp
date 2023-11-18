@@ -3,8 +3,8 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 import {ThemeProvider} from '@shopify/restyle';
 
-import {Router} from './src/routes';
-import {theme} from './src/ui';
+import {Router} from '@routes';
+import {theme} from '@ui';
 
 function App(): JSX.Element {
   return (
