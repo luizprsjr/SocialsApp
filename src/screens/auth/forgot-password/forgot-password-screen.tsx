@@ -1,11 +1,10 @@
 import React from 'react';
 
 import {zodResolver} from '@hookform/resolvers/zod';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {useForm} from 'react-hook-form';
 
 import {useResetNavigationSuccess} from '@hooks';
-import {RootStackParamList} from '@routes';
+import {AuthScreenProps} from '@routes';
 import {Button, ControlledTextInput, Screen, Text} from '@ui';
 
 import {
@@ -13,12 +12,10 @@ import {
   forgotPasswordSchema,
 } from './forgot-password-schema';
 
-type ScreenProps = NativeStackScreenProps<
-  RootStackParamList,
-  'ForgotPasswordScreen'
->;
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function ForgotPasswordScreen({navigation}: ScreenProps) {
+export function ForgotPasswordScreen({
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  navigation,
+}: AuthScreenProps<'ForgotPasswordScreen'>) {
   const {reset} = useResetNavigationSuccess();
 
   const {control, formState, handleSubmit} = useForm<ForgotPasswordSchema>({
