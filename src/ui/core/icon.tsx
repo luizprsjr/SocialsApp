@@ -27,11 +27,15 @@ export function Icon({
   const {colors} = useAppTheme();
   const SVGIcon = iconRegistry[name];
 
-  return (
-    <Pressable hitSlop={10} onPress={onPress}>
-      <SVGIcon color={colors[color]} size={size} />
-    </Pressable>
-  );
+  if (onPress) {
+    return (
+      <Pressable hitSlop={10} onPress={onPress}>
+        <SVGIcon color={colors[color]} size={size} />
+      </Pressable>
+    );
+  }
+
+  return <SVGIcon color={colors[color]} size={size} />;
 }
 
 const iconRegistry = {
