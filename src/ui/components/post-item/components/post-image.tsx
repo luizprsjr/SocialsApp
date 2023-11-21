@@ -10,7 +10,7 @@ export function PostImage({imageURL}: Props) {
     <Image
       source={{uri: imageURL}}
       resizeMode="cover"
-      style={{width: WIDTH, height: 300}}
+      style={{width: WIDTH, height: 300, marginHorizontal: -24}}
     />
   );
 }
