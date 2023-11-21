@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Circle, Path, Svg} from 'react-native-svg';
 
-import {IconBase} from '../core/icon';
+import {IconBase} from '@ui';
 
 export function ChatOnIcon({size = 20, color = 'black'}: IconBase) {
   return (

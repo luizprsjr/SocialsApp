@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Circle, Path, Svg} from 'react-native-svg';
 
-import {IconBase} from '../core/icon';
+import {IconBase} from '@ui';
 import {palette} from '../theme';
 
 export function ErrorRoundIcon({
