@@ -17,7 +17,7 @@ module.exports = {
                 position: 'before',
               },
               {
-                pattern: '@+(routes|screens|ui|hooks)',
+                pattern: '@+(routes|screens|ui|hooks|domain)',
                 group: 'internal',
                 position: 'before',
               },
@@ -35,6 +35,7 @@ module.exports = {
             'newlines-between': 'always',
           },
         ],
+        '@typescript-eslint/no-unused-vars': 'warn',
       },
     },
   ],
