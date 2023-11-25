@@ -3,6 +3,7 @@ import axios from 'axios';
 export const api = axios.create({
   baseURL: 'http://127.0.0.1:3333/',
   headers: {
-    Authorization: 'Bearer Token',
+    Authorization:
+      'Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7InVzZXJJZCI6MTAsInVzZXIiOnsiZW1haWwiOiJsdWl6QGdtYWlsLmNvbSJ9fSwiaWF0IjoxNzAwOTQyNTQ4LCJleHAiOjE3MDA5NDQzNDh9.u0pP5pWDUgB182lboaWC-sUwkUFo5amFPGbU3Ovs0Pj-6JasQemWHEYhPepxi3mEh76cB45u399U5CGKLvM9F15mBLh-2oZfMzIyKmFe5c5WONWm1CkvSBxjfrTVRCSHv3Vr_b386r1NF_7lm4E7yUGUh9JQsg1o7e7dGmqNiHFuoe2WWDQ0n6AkIFypRH0XEgA8_Ndnc9qyPbmT3s-ZTMFDarWMwaNh9pAhYoLZN94zZgY8tAkh6AXkaYVR75K_SYAyrRD_IixMMVdSZJhVOy5SLzGVyrIUe2-ovBjmKMWJcQ48NpuO47hLxjR4_Tfy5Z3lNwlSNIaRH_xUAp8Q6vwfx8_rvIXOwFtiWZZ9dnrH7YKkz34HKEpvOnrDzZIWrcM_xJ9OxEnhynKT72CgEt9ZEqMXGLD-tB5My6Sg4ByqgpiKzd9mh3H6o8qVA99TpB2lJJFacllZfLVkCQOZ4ZmReUvprmKN-lLj4omc9gM8j6XgnTunWXfwhCNomLxFAVeLg_49DcdGr7U1slbI2sYpRqkkLD6XllC-5bKCHH5eLqxi9Zn2h-S1TjVd0KA4QPLOoJ0O1hGxCXMx2G0R_p5MTUh9tmbXq5xRth2XgxCNpSR5Rf-RfY4pG2_Na7ZSyVjMxAVJtqBgy-PRD9KiuMUZ9WOmHsE0IN1HMNBs6yA',
   },
 });
