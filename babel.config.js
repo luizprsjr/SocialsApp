@@ -12,6 +12,7 @@ module.exports = {
           '@hooks': './src/hooks',
           '@domain': './src/domain',
           '@api': './src/api',
+          '@types': './src/types',
         },
       },
     ],
