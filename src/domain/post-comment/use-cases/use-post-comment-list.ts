@@ -1,4 +1,4 @@
-import {usePaginatedList} from 'src/domain/hooks/use-paginated-list';
+import {usePaginatedList} from '@domain';
 
 import {postCommentService} from '../post-comment-service';
 

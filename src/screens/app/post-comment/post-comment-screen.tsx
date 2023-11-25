@@ -1,14 +1,19 @@
 import React from 'react';
 
+import {usePostCommentList} from '@domain';
 import {AppScreenProps} from '@routes';
 import {Box, Screen, Text} from '@ui';
 
-export function PostCommentScreen({}: AppScreenProps<'PostCommentScreen'>) {
-  // route.params.
+export function PostCommentScreen({
+  route,
+}: AppScreenProps<'PostCommentScreen'>) {
+  const postId = route.params.postId;
+  usePostCommentList(postId);
+
   return (
     <Screen title="Comentários" canGoBack>
       <Box>
-        <Text>Post Comment Screen</Text>
+        <Text>Tela de comentários</Text>
       </Box>
     </Screen>
   );
