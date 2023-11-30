@@ -3,3 +3,4 @@ export * from './post-comment-service';
 
 export * from './use-cases/use-post-comment-list';
 export * from './use-cases/use-post-comment-create';
+export * from './use-cases/use-post-comment-remove';
