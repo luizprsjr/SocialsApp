@@ -8,3 +8,4 @@ export * from './text-input';
 export * from './controlled-text-input';
 export * from './password-input';
 export * from './controlled-password-input';
+export * from './toast';
