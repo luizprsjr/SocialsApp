@@ -50,6 +50,7 @@ const iconRegistry = {
   chatOn: I.ChatOnIcon,
   check: I.CheckIcon,
   checkRound: I.CheckRoundIcon,
+  errorRound: I.ErrorRoundIcon,
   comment: I.CommentIcon,
   chevronRight: I.ChevronRightIcon,
   eyeOn: I.EyeOnIcon,
