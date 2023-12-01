@@ -1,16 +1,30 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
+import {useToast} from '@services';
 import {$shadowProps, Box, BoxProps, Icon, Text, WIDTH} from '@ui';
 
 const MAX_WIDTH = WIDTH * 0.9;
 
 export function Toast() {
+  const {toast, hiddenToast} = useToast();
+
+  useEffect(() => {
+    if (toast) {
+      setTimeout(() => {
+        hiddenToast();
+      }, 2000);
+    }
+  }, [toast, hiddenToast]);
+
+  if (!toast) {
+    return null;
+  }
+
   return (
     <Box top={100} {...$boxStyle}>
       <Icon color="success" name="checkRound" />
       <Text style={{flexShrink: 1}} ml="s16" preset="paragraphMedium" bold>
-        Toast Component Toast Toast Component Toast Toast Component Toast
-        Component
+        {toast?.message}
       </Text>
     </Box>
   );
