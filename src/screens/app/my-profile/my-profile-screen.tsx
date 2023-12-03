@@ -1,19 +1,26 @@
 import React from 'react';
 
 import {AppTabScreenProps} from '@routes';
-import {Button, Screen, Text} from '@ui';
+import {useAuthCredentials} from '@services';
+import {Box, Icon, Screen, Text} from '@ui';
 
 export function MyProfileScreen({
   navigation,
 }: AppTabScreenProps<'MyProfileScreen'>) {
+  const {authCredentials} = useAuthCredentials();
+  const name = authCredentials?.user.fullName;
   return (
     <Screen>
-      <Text preset="headingSmall">My Profile Screen</Text>
-
-      <Button
-        title="Settings"
-        onPress={() => navigation.navigate('SettingsScreen')}
-      />
+      <Box
+        flexDirection="row"
+        justifyContent="space-between"
+        alignItems="center">
+        {name && <Text preset="headingMedium">{name}</Text>}
+        <Icon
+          name="settings"
+          onPress={() => navigation.navigate('SettingsScreen')}
+        />
+      </Box>
     </Screen>
   );
 }
