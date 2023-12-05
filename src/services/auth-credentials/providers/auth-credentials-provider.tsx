@@ -3,7 +3,7 @@ import {createContext, useState} from 'react';
 
 import {authApi} from 'src/domain/auth/auth-api';
 
-import {api} from '@api';
+import {api, registerInterceptor} from '@api';
 import {AuthCredentials, authService} from '@domain';
 
 import {authCredentialsStorage} from '../auth-credentials-storage';
@@ -28,47 +28,18 @@ export function AuthCredentialsProvider({
   }, []);
 
   useEffect(() => {
-    const interceptor = api.interceptors.response.use(
-      response => response,
-      async responseError => {
-        const failedRequest = responseError.config;
-        const hasNotRefreshToken = !authCredentials?.refreshToken;
-        const isRefreshTokenRequest =
-          authApi.isRefreshTokenRequest(failedRequest);
-
-        if (responseError.response.status === 401) {
-          if (
-            hasNotRefreshToken ||
-            isRefreshTokenRequest ||
-            failedRequest.sent
-          ) {
-            removeCredentials();
-            return Promise.reject(responseError);
-          }
-
-          failedRequest.sent = true;
-
-          const newAuthCredentials =
-            await authService.authenticateByRefreshToken(
-              authCredentials?.refreshToken,
-            );
-          saveCredentials(newAuthCredentials);
-
-          failedRequest.headers.Authorization = `Bearer ${newAuthCredentials.token}`;
-
-          return api(failedRequest);
-        }
-      },
-    );
+    const interceptor = registerInterceptor({
+      authCredentials,
+      removeCredentials,
+      saveCredentials,
+    });
 
     // remove listener when component unmount
-    return () => api.interceptors.response.eject(interceptor);
-  }, [authCredentials?.refreshToken]);
+    return interceptor;
+  }, [authCredentials]);
 
   async function startAuthCredentials() {
     try {
-      // await new Promise(resolve => setTimeout(resolve, 2000, ''));
-      // authCredentialsStorage.remove();
       const ac = await authCredentialsStorage.get();
       if (ac) {
         authService.updateToken(ac.token);
