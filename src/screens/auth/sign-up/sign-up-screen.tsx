@@ -3,10 +3,11 @@ import React from 'react';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {useForm} from 'react-hook-form';
 
-import {useAuthSignUp} from '@domain';
+import {useAuthIsUsernameAvailable, useAuthSignUp} from '@domain';
 import {useResetNavigationSuccess} from '@hooks';
 import {AuthScreenProps, AuthStackParamList} from '@routes';
 import {
+  ActivityIndicator,
   Button,
   ControlledPasswordInput,
   ControlledTextInput,
@@ -40,16 +41,24 @@ export function SignUpScreen({}: AuthScreenProps<'SignUpScreen'>) {
       reset(resetParam);
     },
   });
-  const {control, formState, handleSubmit} = useForm<SignUpSchema>({
-    resolver: zodResolver(signUpSchema),
-    defaultValues,
-    mode: 'onChange',
-  });
+  const {control, formState, handleSubmit, watch, getFieldState} =
+    useForm<SignUpSchema>({
+      resolver: zodResolver(signUpSchema),
+      defaultValues,
+      mode: 'onChange',
+    });
 
   function submitForm(formValues: SignUpSchema) {
-    console.log(formValues);
     signUp(formValues);
   }
+
+  const username = watch('username');
+  const usernameState = getFieldState('username');
+  const usernameIsValid = !usernameState.invalid && usernameState.isDirty;
+  const usernameQuery = useAuthIsUsernameAvailable({
+    username,
+    enabled: usernameIsValid,
+  });
 
   return (
     <Screen canGoBack scrollable>
@@ -63,6 +72,11 @@ export function SignUpScreen({}: AuthScreenProps<'SignUpScreen'>) {
         label="Seu username"
         placeholder="@"
         boxProps={{mb: 's20'}}
+        RightComponent={
+          usernameQuery.isFetching ? (
+            <ActivityIndicator size="small" />
+          ) : undefined
+        }
       />
 
       <ControlledTextInput
@@ -73,6 +87,7 @@ export function SignUpScreen({}: AuthScreenProps<'SignUpScreen'>) {
         placeholder="Digite seu nome"
         boxProps={{mb: 's20'}}
       />
+
       <ControlledTextInput
         control={control}
         name="lastName"
@@ -81,6 +96,7 @@ export function SignUpScreen({}: AuthScreenProps<'SignUpScreen'>) {
         placeholder="Digite seu sobrenome"
         boxProps={{mb: 's20'}}
       />
+
       <ControlledTextInput
         control={control}
         name="email"
@@ -99,7 +115,7 @@ export function SignUpScreen({}: AuthScreenProps<'SignUpScreen'>) {
 
       <Button
         loading={isLoading}
-        disabled={!formState.isValid}
+        disabled={!formState.isValid || usernameQuery.isFetching}
         onPress={handleSubmit(submitForm)}
         title="Criar uma conta"
       />
