@@ -2,13 +2,13 @@ import React from 'react';
 
 import {fireEvent, render, screen} from 'test-utils';
 
+import {theme} from '@ui';
+
 import {Button, ButtonProps} from '../Button';
 
 function renderComponent(props?: Partial<ButtonProps>) {
   render(<Button title="Button Title" {...props} />);
-
   const titleElement = screen.getByText(/button title/i);
-
   return {titleElement};
 }
 
@@ -16,9 +16,7 @@ describe('<Button />', () => {
   it('should call the onPress function when is pressed', () => {
     const mockedOnPress = jest.fn();
     const {titleElement} = renderComponent({onPress: mockedOnPress});
-
     fireEvent.press(titleElement);
-
     expect(mockedOnPress).toHaveBeenCalled();
   });
 
@@ -28,9 +26,12 @@ describe('<Button />', () => {
       onPress: mockedOnPress,
       disabled: true,
     });
-
     fireEvent.press(titleElement);
-
     expect(mockedOnPress).not.toHaveBeenCalled();
+  });
+
+  it('should have gray title when the button id disabled', () => {
+    const {titleElement} = renderComponent({disabled: true});
+    expect(titleElement).toHaveStyle({color: theme.colors.gray2});
   });
 });
