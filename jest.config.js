@@ -4,7 +4,7 @@ module.exports = {
   moduleDirectories: ['node_modules', './src/test'],
   modulePathIgnorePatterns: ['.*/mocked-data/.*'],
   collectCoverageFrom: [
-    'src/{ui/core,ui/components,utils,hooks}/**/*.{js,jsx,ts,tsx}',
+    'src/{ui/core,ui/components,utils,hooks,domain}/**/*.{js,jsx,ts,tsx}',
   ],
   coveragePathIgnorePatterns: ['/node_modules/', 'index'],
 };
