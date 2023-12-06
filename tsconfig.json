@@ -14,6 +14,7 @@
       "@infra": ["src/infra"],
       "@services": ["src/services"],
       "test-utils": ["src/test/test-utils"],
+      "jest-setup": ["src/test/jest-setup"],
     }
   }
 }
