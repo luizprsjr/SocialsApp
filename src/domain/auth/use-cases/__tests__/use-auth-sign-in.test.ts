@@ -6,8 +6,19 @@ import {useAuthSignIn} from '../use-auth-sign-in';
 
 import {mockedAuthCredentials} from './mocked-data/mocks';
 
+const mockedSaveCredentials = jest.fn();
+jest.mock('@services', () => {
+  const originalModule = jest.requireActual('@services');
+  return {
+    ...originalModule,
+    useAuthCredentials: () => ({
+      saveCredentials: mockedSaveCredentials,
+    }),
+  };
+});
+
 describe('useAuthSignIn', () => {
-  it('should sign-in', async () => {
+  it('should save the credentials if the sign-in is successfully', async () => {
     jest
       .spyOn(authService, 'signIn')
       .mockResolvedValueOnce(mockedAuthCredentials);
@@ -16,6 +27,7 @@ describe('useAuthSignIn', () => {
     });
     result.current.signIn({email: 'any_mail@mail.com', password: '123'});
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
+    expect(mockedSaveCredentials).toHaveBeenCalledWith(mockedAuthCredentials);
   });
   // it('should call the onError function with a message if sign-in fails', () => {
   //   const {result} = renderHook(() => useAuthSignIn(), {
