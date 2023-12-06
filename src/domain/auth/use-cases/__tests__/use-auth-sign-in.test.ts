@@ -1,5 +1,5 @@
-import {renderHook, waitFor} from '@testing-library/react-native';
-import {AllTheProviders} from 'test-utils';
+import {waitFor} from '@testing-library/react-native';
+import {renderHook} from 'test-utils';
 
 import {authService} from '../../auth-service';
 import {useAuthSignIn} from '../use-auth-sign-in';
@@ -23,11 +23,8 @@ describe('useAuthSignIn', () => {
       .spyOn(authService, 'signIn')
       .mockResolvedValueOnce(mockedAuthCredentials);
     const mockedOnSuccess = jest.fn();
-    const {result} = renderHook(
-      () => useAuthSignIn({onSuccess: mockedOnSuccess}),
-      {
-        wrapper: AllTheProviders,
-      },
+    const {result} = renderHook(() =>
+      useAuthSignIn({onSuccess: mockedOnSuccess}),
     );
     result.current.signIn({email: 'any_mail@mail.com', password: '123'});
     await waitFor(() => expect(result.current.isSuccess).toBe(true), {
@@ -41,9 +38,7 @@ describe('useAuthSignIn', () => {
       .spyOn(authService, 'signIn')
       .mockRejectedValue(new Error('invalid user'));
     const mockedOnError = jest.fn();
-    const {result} = renderHook(() => useAuthSignIn({onError: mockedOnError}), {
-      wrapper: AllTheProviders,
-    });
+    const {result} = renderHook(() => useAuthSignIn({onError: mockedOnError}));
     result.current.signIn({email: 'any_mail@mail.com', password: '123'});
     await waitFor(() => expect(result.current.isError).toBe(true));
     expect(mockedOnError).toHaveBeenCalledWith('invalid user');
