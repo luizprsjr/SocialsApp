@@ -1,21 +1,11 @@
 import React from 'react';
 
+import {mockedNavigate} from 'jest-setup';
 import {fireEvent, render, screen} from 'test-utils';
 
 import {PostBottom} from '../post-bottom';
 
 import {mockedPost} from './mocked-data/mocked-post';
-
-const mockedNavigate = jest.fn();
-jest.mock('@react-navigation/native', () => {
-  const originalModule = jest.requireActual('@react-navigation/native');
-  return {
-    ...originalModule,
-    useNavigation: () => ({
-      navigate: mockedNavigate,
-    }),
-  };
-});
 
 describe('<PostBottom />', () => {
   beforeEach(() => jest.clearAllMocks());
