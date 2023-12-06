@@ -22,16 +22,30 @@ describe('useAuthSignIn', () => {
     jest
       .spyOn(authService, 'signIn')
       .mockResolvedValueOnce(mockedAuthCredentials);
-    const {result} = renderHook(() => useAuthSignIn(), {
+    const mockedOnSuccess = jest.fn();
+    const {result} = renderHook(
+      () => useAuthSignIn({onSuccess: mockedOnSuccess}),
+      {
+        wrapper: AllTheProviders,
+      },
+    );
+    result.current.signIn({email: 'any_mail@mail.com', password: '123'});
+    await waitFor(() => expect(result.current.isSuccess).toBe(true), {
+      timeout: 5000,
+    });
+    expect(mockedSaveCredentials).toHaveBeenCalledWith(mockedAuthCredentials);
+    expect(mockedOnSuccess).toHaveBeenCalledWith(mockedAuthCredentials);
+  });
+  it('should call the onError function with a message if sign-in fails', async () => {
+    jest
+      .spyOn(authService, 'signIn')
+      .mockRejectedValue(new Error('invalid user'));
+    const mockedOnError = jest.fn();
+    const {result} = renderHook(() => useAuthSignIn({onError: mockedOnError}), {
       wrapper: AllTheProviders,
     });
     result.current.signIn({email: 'any_mail@mail.com', password: '123'});
-    await waitFor(() => expect(result.current.isSuccess).toBe(true));
-    expect(mockedSaveCredentials).toHaveBeenCalledWith(mockedAuthCredentials);
+    await waitFor(() => expect(result.current.isError).toBe(true));
+    expect(mockedOnError).toHaveBeenCalledWith('invalid user');
   });
-  // it('should call the onError function with a message if sign-in fails', () => {
-  //   const {result} = renderHook(() => useAuthSignIn(), {
-  //     wrapper: AllTheProviders,
-  //   });
-  // });
 });
