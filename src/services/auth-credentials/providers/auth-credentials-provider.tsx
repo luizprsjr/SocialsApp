@@ -1,9 +1,7 @@
 import React, {useEffect} from 'react';
 import {createContext, useState} from 'react';
 
-import {authApi} from 'src/domain/auth/auth-api';
-
-import {api, registerInterceptor} from '@api';
+import {registerInterceptor} from '@api';
 import {AuthCredentials, authService} from '@domain';
 
 import {authCredentialsStorage} from '../auth-credentials-storage';
@@ -11,6 +9,7 @@ import {AuthCredentialsService} from '../auth-credentials-type';
 
 export const AuthCredentialsContext = createContext<AuthCredentialsService>({
   authCredentials: null,
+  userId: null,
   isLoading: true,
   saveCredentials: async () => {},
   removeCredentials: async () => {},
@@ -64,9 +63,17 @@ export function AuthCredentialsProvider({
     setAuthCredentials(null);
   }
 
+  const userId = authCredentials?.user.id || null;
+
   return (
     <AuthCredentialsContext.Provider
-      value={{authCredentials, isLoading, saveCredentials, removeCredentials}}>
+      value={{
+        authCredentials,
+        isLoading,
+        saveCredentials,
+        removeCredentials,
+        userId,
+      }}>
       {children}
     </AuthCredentialsContext.Provider>
   );
