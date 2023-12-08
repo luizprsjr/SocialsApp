@@ -14,6 +14,7 @@ import {
   RenderHookOptions,
 } from '@testing-library/react-native';
 
+import {AuthCredentialsProvider} from '@services';
 import {theme} from '@ui';
 
 const queryClientConfig: QueryClientConfig = {
@@ -52,11 +53,13 @@ export const wrapScreenProviders = () => {
   const queryClient = new QueryClient(queryClientConfig);
 
   return ({children}: {children: React.ReactNode}) => (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme}>
-        <NavigationContainer>{children} </NavigationContainer>
-      </ThemeProvider>
-    </QueryClientProvider>
+    <AuthCredentialsProvider>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider theme={theme}>
+          <NavigationContainer>{children} </NavigationContainer>
+        </ThemeProvider>
+      </QueryClientProvider>
+    </AuthCredentialsProvider>
   );
 };
 
