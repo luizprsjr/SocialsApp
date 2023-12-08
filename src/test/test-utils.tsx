@@ -15,7 +15,7 @@ import {
 } from '@testing-library/react-native';
 
 import {AuthCredentialsProvider} from '@services';
-import {theme} from '@ui';
+import {Toast, theme} from '@ui';
 
 const queryClientConfig: QueryClientConfig = {
   defaultOptions: {
@@ -36,7 +36,7 @@ export const wrapAllProviders = () => {
   return ({children}: {children: React.ReactNode}) => (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
-        <NavigationContainer>{children} </NavigationContainer>
+        <NavigationContainer>{children}</NavigationContainer>
       </ThemeProvider>
     </QueryClientProvider>
   );
@@ -56,7 +56,8 @@ export const wrapScreenProviders = () => {
     <AuthCredentialsProvider>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={theme}>
-          <NavigationContainer>{children} </NavigationContainer>
+          <NavigationContainer>{children}</NavigationContainer>
+          <Toast />
         </ThemeProvider>
       </QueryClientProvider>
     </AuthCredentialsProvider>
