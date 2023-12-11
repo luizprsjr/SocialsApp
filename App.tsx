@@ -5,12 +5,10 @@ import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 import {Router} from '@routes';
-import {
-  AuthCredentialsProvider,
-  initializeStorage,
-  MMKVStorage,
-} from '@services';
 import {Toast, theme} from '@ui';
+
+import {AuthCredentialsProvider} from './src/services/auth-credentials/providers/auth-credentials-provider';
+import {initializeStorage, MMKVStorage} from './src/services/storage';
 
 initializeStorage(MMKVStorage);
 
