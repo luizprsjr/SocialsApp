@@ -29,5 +29,6 @@ describe('integration: SearchScreen', () => {
     expect(user1).toBeOnTheScreen();
     const user2 = await screen.findByText(userMocked.user2.username);
     expect(user2).toBeOnTheScreen();
+    fireEvent.press(user1);
   });
 });
