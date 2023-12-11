@@ -1,4 +1,4 @@
-import {User, UserAPI} from '../User';
+import {User, UserAPI} from '../user';
 
 export interface AuthCredentials {
   token: string;

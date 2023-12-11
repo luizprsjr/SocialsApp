@@ -5,7 +5,7 @@ import {fireEvent, render, screen} from 'test-utils';
 
 import {theme} from '@ui';
 
-import {Button, ButtonProps} from '../Button';
+import {Button, ButtonProps} from '../button';
 
 function renderComponent(props?: Partial<ButtonProps>) {
   render(<Button title="Button Title" {...props} />);
